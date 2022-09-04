@@ -41,3 +41,25 @@ struct Geo: Codable {
     let lat: String?
     let lng: String?
 }
+struct Post: Decodable {
+    let userID:Int?
+    let id:Int?
+    let title:String?
+    let body:String?
+}
+
+struct Coments: Decodable {
+    let postID: Int?
+    let id: Int?
+    let name: String?
+    let email: String?
+    let body: String?
+}
+
+struct Photo: Decodable {
+    let albumID: Int?
+    let id:Int?
+    let title:String?
+    let url:String?
+    let thumbnailUrl:String?
+}
