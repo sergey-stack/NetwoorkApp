@@ -7,7 +7,6 @@
 
 import Foundation
 class ApiConstants {
-    
     // Local server
     static let serverPath = "http://localhost:3000/"
     

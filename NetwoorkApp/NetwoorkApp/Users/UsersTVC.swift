@@ -9,6 +9,7 @@ import UIKit
 
 class UsersTVC: UITableViewController {
     var users: [User] = []
+    var posts: [Post] = []
 
     // MARK: - Table view data source
 

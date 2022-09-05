@@ -159,13 +159,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-Pp-Kf4">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="824.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="109" translatesAutoresizingMaskIntoConstraints="NO" id="cmE-fg-lj1">
-                                                <rect key="frame" x="50" y="204" width="314" height="570.5"/>
+                                                <rect key="frame" x="50" y="204" width="314" height="632"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="yqM-B0-5hd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="266.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="328"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="172" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-Ly-Eoi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
@@ -267,10 +267,30 @@
                                                                     <constraint firstItem="Di9-QM-gkp" firstAttribute="width" secondItem="ZcC-GP-TXH" secondAttribute="width" id="3Qy-3f-FiO"/>
                                                                 </constraints>
                                                             </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="172" translatesAutoresizingMaskIntoConstraints="NO" id="ztG-fv-i4g">
+                                                                <rect key="frame" x="0.0" y="307.5" width="314" height="20.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="adress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yey-wJ-swg">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="71" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SI-fg-GKU">
+                                                                        <rect key="frame" x="243" y="0.0" width="71" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="5SI-fg-GKU" firstAttribute="width" secondItem="Yey-wJ-swg" secondAttribute="width" id="f1z-dR-tc4"/>
+                                                                </constraints>
+                                                            </stackView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="5Pw-Mf-MM0">
-                                                        <rect key="frame" x="0.0" y="375.5" width="314" height="195"/>
+                                                        <rect key="frame" x="0.0" y="437" width="314" height="195"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoY-1B-q0y">
                                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="31"/>
@@ -332,6 +352,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="a1h-ib-npG"/>
                     <connections>
+                        <outlet property="adress" destination="5SI-fg-GKU" id="EEi-mT-At5"/>
                         <outlet property="email" destination="8CF-YP-YJS" id="Ide-EP-8Px"/>
                         <outlet property="name" destination="zLH-8O-H4L" id="j0p-Mf-OyS"/>
                         <outlet property="phone" destination="5xs-V9-NGR" id="b2p-V6-biB"/>
