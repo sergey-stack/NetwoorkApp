@@ -8,6 +8,7 @@
 import UIKit
 
 class DetailPostVC: UIViewController {
+    var user: User?
     var post: Post?
     var coment: Coments?
     

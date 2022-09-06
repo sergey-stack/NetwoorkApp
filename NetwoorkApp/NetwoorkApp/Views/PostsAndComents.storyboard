@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dsn-Di-sfz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--PostsTVC-->
+        <!--Posts-->
         <scene sceneID="rlT-Ma-XqZ">
             <objects>
                 <tableViewController storyboardIdentifier="PostsTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dsn-Di-sfz" customClass="PostsTVC" customModule="NetwoorkApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,17 +47,108 @@
                             <outlet property="delegate" destination="Dsn-Di-sfz" id="5wj-ry-ToM"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Posts" id="imm-lf-uZf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="izW-2q-IrL">
+                            <connections>
+                                <segue destination="Dsa-Mi-JBy" kind="show" identifier="AddNewPostSegue" id="0Tn-lE-oxt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="c0g-33-2Cd" kind="show" identifier="DetailPostSegue" id="kLI-jc-miG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bw9-nD-fHL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="47"/>
+            <point key="canvasLocation" x="113" y="74"/>
+        </scene>
+        <!--New PostVC-->
+        <scene sceneID="N64-JJ-Exx">
+            <objects>
+                <viewController id="Dsa-Mi-JBy" customClass="NewPostVC" customModule="NetwoorkApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rMA-nY-4F9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="MWj-fi-Rbb">
+                                <rect key="frame" x="70" y="144" width="274" height="598"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="njv-Wx-wj2">
+                                        <rect key="frame" x="0.0" y="0.0" width="274" height="349"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tqh-vW-nef">
+                                                <rect key="frame" x="0.0" y="0.0" width="274" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="ByM-5m-5Cg"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="axB-4M-g9V">
+                                                <rect key="frame" x="0.0" y="60" width="274" height="289"/>
+                                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="7Nm-z2-3Ey">
+                                        <rect key="frame" x="0.0" y="419" width="274" height="179"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-qL-Crc">
+                                                <rect key="frame" x="0.0" y="0.0" width="274" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="NxW-Vw-sVM"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Post with UrlSession"/>
+                                                <connections>
+                                                    <action selector="poctUrlSession" destination="Dsa-Mi-JBy" eventType="touchUpInside" id="BYb-Kk-HXI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqJ-Gu-0DL">
+                                                <rect key="frame" x="0.0" y="129" width="274" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="olK-t5-ivG"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Post with Alamofire"/>
+                                                <connections>
+                                                    <action selector="postAlamofire" destination="Dsa-Mi-JBy" eventType="touchUpInside" id="Yyu-Qm-GkZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Wa-Hn-F8f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MWj-fi-Rbb" secondAttribute="trailing" constant="50" id="CmB-3B-FNM"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="MWj-fi-Rbb" secondAttribute="bottom" constant="100" id="Ma0-lK-odm"/>
+                            <constraint firstItem="MWj-fi-Rbb" firstAttribute="top" secondItem="rMA-nY-4F9" secondAttribute="topMargin" constant="100" id="Y7w-F3-q1n"/>
+                            <constraint firstItem="MWj-fi-Rbb" firstAttribute="leading" secondItem="rMA-nY-4F9" secondAttribute="leadingMargin" constant="50" id="mtm-hQ-28U"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hBY-47-z9o"/>
+                    <connections>
+                        <outlet property="botyTv" destination="axB-4M-g9V" id="VVm-wh-Xdj"/>
+                        <outlet property="titleTf" destination="Tqh-vW-nef" id="nQu-TC-JA0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XgE-C2-Klq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941" y="-613"/>
         </scene>
         <!--Detail PostVC-->
         <scene sceneID="DXk-m8-W2X">
             <objects>
                 <viewController storyboardIdentifier="DetailPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c0g-33-2Cd" customClass="DetailPostVC" customModule="NetwoorkApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p1F-at-9Ac">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dh6-zl-nMb">
@@ -106,7 +197,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syv-1G-dHB">
-                                <rect key="frame" x="117" y="713" width="180" height="62"/>
+                                <rect key="frame" x="117" y="693" width="180" height="62"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Coments">
@@ -128,6 +219,7 @@
                             <constraint firstItem="dh6-zl-nMb" firstAttribute="top" secondItem="p1F-at-9Ac" secondAttribute="topMargin" constant="50" id="ytp-vJ-EY5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vLC-NB-LUu"/>
                     <connections>
                         <outlet property="bodyLbl" destination="Wx3-u9-NhW" id="hNf-lC-de1"/>
                         <outlet property="titleLbl" destination="Ld8-Wu-xLo" id="61d-UN-TZN"/>
@@ -135,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bV-7Z-x0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660.86956521739137" y="46.875"/>
+            <point key="canvasLocation" x="942" y="88"/>
         </scene>
         <!--ComentsTVC-->
         <scene sceneID="KZG-Ax-sBl">
@@ -179,7 +271,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVF-NT-85a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="47"/>
+            <point key="canvasLocation" x="1739" y="88"/>
         </scene>
         <!--Detail ComentVC-->
         <scene sceneID="deC-Fw-ChG">
@@ -271,12 +363,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEj-8M-baB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079.7101449275365" y="46.875"/>
+            <point key="canvasLocation" x="2472" y="88"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

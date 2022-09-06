@@ -10,6 +10,7 @@ import UIKit
 class DetailComentVC: UIViewController {
     var comment: Coments?
 
+    
     @IBOutlet var lableEmail: UILabel!
     
     @IBOutlet var lableBody: UILabel!
@@ -22,7 +23,8 @@ class DetailComentVC: UIViewController {
     }
     
     private func setupUI() {
-        lableEmail.text = comment?.email
+        
+       lableEmail.text = comment?.email
         lableBody.text = comment?.body
         lableName.text = comment?.name
     }
