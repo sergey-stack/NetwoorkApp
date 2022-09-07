@@ -65,9 +65,9 @@ struct Photo: Decodable {
     let thumbnailUrl: String?
 }
 
-struct toDos:Decodable {
+struct toDos: Decodable {
     let userId: Int?
     let id: Int?
     let title: String?
-    let completed :Bool?
+    let completed: Bool?
 }

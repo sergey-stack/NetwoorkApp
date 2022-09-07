@@ -5,39 +5,36 @@
 //  Created by сергей on 7.09.22.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 class MapsVC: UIViewController {
-    var user:User?
+    var user: User?
 
-    @IBOutlet weak var mapsView: MKMapView!
+    @IBOutlet var mapsView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-
     }
-    
+
     private func setupUI() {
         guard
-            
+
             let user = user,
             let address = user.address,
             let geo = address.geo,
             let lat = geo.lat,
-                let doubleLat = Double(lat),
-                let lng = geo.lng,
+            let doubleLat = Double(lat),
+            let lng = geo.lng,
             let doubleLng = Double(lng)
-                
-            
+
         else {
             return
         }
 
         let anatation = MKPointAnnotation()
-        anatation.coordinate.latitude = doubleLat//широта
-        anatation.coordinate.longitude = doubleLng//долгота
+        anatation.coordinate.latitude = doubleLat // широта
+        anatation.coordinate.longitude = doubleLng // долгота
         mapsView.addAnnotation(anatation)
     }
-
 }

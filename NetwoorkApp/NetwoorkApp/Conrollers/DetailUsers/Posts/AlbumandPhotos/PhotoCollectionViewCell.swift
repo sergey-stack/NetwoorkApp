@@ -5,19 +5,16 @@
 //  Created by сергей on 7.09.22.
 //
 
-import UIKit
-import SwiftyJSON
 import Alamofire
 import AlamofireImage
-
+import SwiftyJSON
+import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var photoImage: UIImageView!
 
-    
-    var photo: JSON!//при создании ячейки передаём фото
+    var photo: JSON! // при создании ячейки передаём фото
 
     func configureCell() {
         photoImage.image = #imageLiteral(resourceName: "default-image")
@@ -29,10 +26,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
                 activityIndicator.stopAnimating()
                 photoImage.image = image
             } else {
-                AF.request(thumbnailURL).responseImage { [weak self] response in//обращаемся к аф вкидываем юрл
+                AF.request(thumbnailURL).responseImage { [weak self] response in // обращаемся к аф вкидываем юрл
                     if case .success(let image) = response.result {
                         self?.activityIndicator.stopAnimating()
-                        self?.photoImage.image = image//вставляем картинку в photoImage
+                        self?.photoImage.image = image // вставляем картинку в photoImage
                         CacheManager.shared.imageCache.add(image, withIdentifier: thumbnailURL)
                     }
                 }
@@ -40,5 +37,3 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
     }
 }
-    
-

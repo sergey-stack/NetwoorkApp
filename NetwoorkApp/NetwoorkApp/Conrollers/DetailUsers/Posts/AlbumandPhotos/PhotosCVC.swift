@@ -5,20 +5,19 @@
 //  Created by сергей on 7.09.22.
 //
 
-import UIKit
-import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import SwiftyJSON
+import UIKit
 
 class PhotosCVC: UICollectionViewController {
-
     var user: User!
     var album: JSON!
     var photos: [JSON] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = album["title"].string//вызываем тайтл из альбома
+        title = album["title"].string // вызываем тайтл из альбома
         getData()
     }
 
@@ -29,17 +28,15 @@ class PhotosCVC: UICollectionViewController {
         collectionView.collectionViewLayout = layout
     }
 
-
-
     func getData() {
-        if let album = album,//извлекаем альбом
-            let albumId = album["id"].int,//из альбома забираем айди
-            let url = URL(string: "https://jsonplaceholder.typicode.com/photos?albumId=\(albumId)") {//лезем в фото и устанавливаем пармер альбомайди==альбом айди
-
+        if let album = album, // извлекаем альбом
+           let albumId = album["id"].int, // из альбома забираем айди
+           let url = URL(string: "https://jsonplaceholder.typicode.com/photos?albumId=\(albumId)")
+        { // лезем в фото и устанавливаем пармер альбомайди==альбом айди
             AF.request(url).responseJSON { response in
                 switch response.result {
                 case .success(let data):
-                    self.photos = JSON(data).arrayValue//вытаскиваем фотограыфии
+                    self.photos = JSON(data).arrayValue // вытаскиваем фотограыфии
                     self.collectionView.reloadData()
                 case .failure(let error):
                     print(error)
@@ -56,14 +53,14 @@ class PhotosCVC: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.photo = photos[indexPath.row]//вытаскиваем одну фотографию
+        cell.photo = photos[indexPath.row] // вытаскиваем одну фотографию
         cell.configureCell()
-        cell.getThumbnail()//вызываем метод который запустит в другом потоке показ картинки
+        cell.getThumbnail() // вызываем метод который запустит в другом потоке показ картинки
         return cell
     }
 
     // MARK: - UICollectionViewDelegate
-    
+
 //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        performSegue(withIdentifier: "showPhoto", sender: photos[indexPath.row])
 //    }

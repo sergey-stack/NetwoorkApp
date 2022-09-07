@@ -45,9 +45,7 @@ class DetailUserVC: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "ToDosTVC") as! ToDosTVC
         vc.user = user
         navigationController?.pushViewController(vc, animated: true)
-        
     }
-    
     
     @IBAction func locationAction() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -55,8 +53,6 @@ class DetailUserVC: UIViewController {
         vc.user = user
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
     
     private func setupUI() { // опциональная цепочка
         name.text = user?.name
@@ -66,5 +62,4 @@ class DetailUserVC: UIViewController {
         website.text = user?.website
         adress.text = user?.address?.city
     }
-
 }

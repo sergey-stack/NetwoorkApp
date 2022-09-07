@@ -14,9 +14,7 @@ class DetailPostVC: UIViewController {
     
     @IBOutlet var titleLbl: UILabel!
     
-    @IBOutlet weak var bodyTV: UITextView!
-    
-    
+    @IBOutlet var bodyTV: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

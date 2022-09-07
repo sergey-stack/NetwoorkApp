@@ -5,18 +5,16 @@
 //  Created by сергей on 6.09.22.
 //
 
-import UIKit
-import SwiftyJSON
 import Alamofire
-
+import SwiftyJSON
+import UIKit
 
 class NewPostVC: UIViewController {
     var user: User?
-    
-    @IBOutlet weak var titleTf: UITextField!
-    
-    @IBOutlet weak var botyTv: UITextView!
-    
+
+    @IBOutlet var titleTf: UITextField!
+
+    @IBOutlet var botyTv: UITextView!
 
     @IBAction func poctUrlSession() {
         if let userId = user?.id,
@@ -40,7 +38,7 @@ class NewPostVC: UIViewController {
             request.httpBody = httpBody
 
             // Create dataTask and post new request
-            
+
             URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
                 print(response ?? "")
                 if let data = data {
@@ -50,7 +48,7 @@ class NewPostVC: UIViewController {
                     let userId = json["userId"].int
                     let title = json["title"].string
                     let body = json["body"].string
-                    
+
                     DispatchQueue.main.async {
                         self?.navigationController?.popViewController(animated: true)
                     }
@@ -60,8 +58,7 @@ class NewPostVC: UIViewController {
             }.resume()
         }
     }
-    
-    
+
     @IBAction func postAlamofire() {
         if let userId = user?.id,
            let title = titleTf.text,
@@ -71,7 +68,7 @@ class NewPostVC: UIViewController {
             let parameters: Parameters = ["userId": userId,
                                           "title": title,
                                           "body": text]
-            
+
             AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
                 .responseJSON { response in
 
@@ -86,6 +83,4 @@ class NewPostVC: UIViewController {
                 }
         }
     }
-    }
-
-
+}
