@@ -14,7 +14,9 @@ class DetailPostVC: UIViewController {
     
     @IBOutlet var titleLbl: UILabel!
     
-    @IBOutlet var bodyLbl: UILabel!
+    @IBOutlet weak var bodyTV: UITextView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class DetailPostVC: UIViewController {
         
     private func setupUII() {
         titleLbl.text = post?.title
-        bodyLbl.text = post?.body
+        bodyTV.text = post?.body
     }
     /*
      // MARK: - Navigation

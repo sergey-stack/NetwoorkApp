@@ -10,11 +10,10 @@ import UIKit
 class PostsTVC: UITableViewController {
     var user: User?
     var posts: [Post] = []
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchPosts()
     }
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +34,6 @@ class PostsTVC: UITableViewController {
         let storyboard = UIStoryboard(name: "PostsAndComents", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailPostVC") as! DetailPostVC
             vc.post = post
-       // vc.user  = user
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -67,11 +65,13 @@ class PostsTVC: UITableViewController {
     
      // MARK: - Navigation
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         // Get the new view controller using segue.destination.
-//         // Pass the selected object to the new view controller.
-//     }
+     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if let newPostVC = segue.destination as? NewPostVC {
+             newPostVC.user = user
+         }
+
+     }
      
     func fetchPosts() {
         guard let userId = user?.id else { return }

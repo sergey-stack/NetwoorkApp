@@ -40,7 +40,7 @@ class UsersTVC: UITableViewController {
     
     // MARK: - Table view func-s
     func fetchUsers() {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {
+        guard let url = ApiConstants.userPathURL else {
             return
         }
 

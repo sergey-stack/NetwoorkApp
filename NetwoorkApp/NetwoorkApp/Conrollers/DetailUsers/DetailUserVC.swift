@@ -33,9 +33,30 @@ class DetailUserVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func albomsAction() {}
+    @IBAction func albomsAction() {
+        let storyboard = UIStoryboard(name: "AlbumsAndPhotos", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AlbomsTVC") as! AlbomsTVC
+        vc.user = user
+        navigationController?.pushViewController(vc, animated: true)
+    }
+        
+    @IBAction func toDoSAction() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ToDosTVC") as! ToDosTVC
+        vc.user = user
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
-    @IBAction func toDoSAction() {}
+    
+    @IBAction func locationAction() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MapsVC") as! MapsVC
+        vc.user = user
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     
     private func setupUI() { // опциональная цепочка
         name.text = user?.name
@@ -45,4 +66,5 @@ class DetailUserVC: UIViewController {
         website.text = user?.website
         adress.text = user?.address?.city
     }
+
 }
